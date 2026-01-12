@@ -1,0 +1,92 @@
+{
+	"layer": "top",
+	"position": "top",
+	"height": 30,
+	"margin": "10 10 0 10",
+	"spaciong": 10,
+
+	"modules-left": ["hyprland/workspaces", "custom/spotify"],
+	"modules-center": ["clock#time", "clock#date"],
+	"modules-right": ["cpu", "memory", "disk", "network", "custom/bluetooth", "pulseaudio", "custom/power"],
+
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons" : {
+			"1": "一",
+			"2": "二",
+			"3": "三",
+			"4": "四",
+			"5": "五",
+			"6": "六",
+			"7": "七",
+			"8": "八",
+			"9": "九",
+			"10": "十"
+		},
+		"persistent-workspaces": {
+			"*": 5
+		}
+	},
+
+	"clock#time": {
+		"format": " {:%H:%M}",
+		"tooltip": false
+	},
+
+	"clock#date": {
+		"format": "󰃭 {:%d %b %Y}",
+		"tooltip-format": "<tt>{calendar}</tt>"
+	},
+
+	"cpu": {
+		"format": " {usage}%",
+		"interval": 2
+	},
+
+	"memory": {
+		"format": " {percentage}%",
+		"interval": 2
+	},
+
+	"disk": {
+		"format": " {percentage_used}%",
+		"path": "/"
+	},
+
+	"pulseaudio": {
+		"format": "  {volume}%",
+	},
+
+	"custom/power": {
+		"format": "POWER",
+		"tooltip": false,
+		"on-click": "~/.config/waybar/scripts/power-menu.sh"
+	},
+	
+	"network": {
+		"format-wifi": "  {signalStrength}%",
+		"format-ethernet": "󰈀  {ipaddr}",
+		"format-disconnected": "󰖪  Sin red",
+		"tooltip-format": "{ifname}: {ipaddr}",
+		"on-click": "~/.config/waybar/scripts/wifi-menu.sh"
+	},
+	
+	"custom/spotify": {
+		"exec": "~/.config/waybar/scripts/spotify.sh",
+		"interval" : 1,
+		"format": "{}",
+		"return-type": "",
+		"max-length": 40,
+		"on-click": "playerctl -p spotify play-pause",
+		"on-scroll-up": "playerctl -p spotify next",
+		"on-scroll-down": "playerctl -p spotify previous",
+		"exec-if": "pgrep spotify"	
+	},
+	
+	"custom/bluetooth": {
+		"exec": "~/.config/waybar/scripts/bluetooth.sh",
+		"interval": 2,
+		"format": "{}",
+		"on-click": "blueman-manager"
+	}		
+}
