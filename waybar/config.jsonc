@@ -7,7 +7,7 @@
 
 	"modules-left": ["hyprland/workspaces", "custom/spotify"],
 	"modules-center": ["clock#time", "clock#date"],
-	"modules-right": ["cpu", "memory", "disk", "network", "custom/bluetooth", "pulseaudio", "custom/power"],
+	"modules-right": ["cpu", "memory", "disk", "network", "custom/bluetooth", "pulseaudio", "battery"],
 
 	"hyprland/workspaces": {
 		"format": "{icon}",
@@ -54,19 +54,13 @@
 	},
 
 	"pulseaudio": {
-		"format": "  {volume}%",
-	},
-
-	"custom/power": {
-		"format": "POWER",
-		"tooltip": false,
-		"on-click": "~/.config/waybar/scripts/power-menu.sh"
+		"format": " {volume}%",
 	},
 	
 	"network": {
-		"format-wifi": "  {signalStrength}%",
-		"format-ethernet": "󰈀  {ipaddr}",
-		"format-disconnected": "󰖪  Sin red",
+		"format-wifi": " {ipaddr}",
+		"format-ethernet": "󰈀 {ipaddr}",
+		"format-disconnected": "󰖪 Sin red",
 		"tooltip-format": "{ifname}: {ipaddr}",
 		"on-click": "~/.config/waybar/scripts/wifi-menu.sh"
 	},
@@ -88,5 +82,14 @@
 		"interval": 2,
 		"format": "{}",
 		"on-click": "blueman-manager"
-	}		
+	},
+	
+	"battery": {
+		"interval": 60,
+		"states": {
+			"warning": 30,
+			"critical": 15
+			},
+		"format": "bat:{capacity}%"
+	}
 }
