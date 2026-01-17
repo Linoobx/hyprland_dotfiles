@@ -1,0 +1,41 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$rust\
+$line_break\
+$character"""
+
+[username]
+show_always = true
+style_user = "cyan"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+style = "purple"
+format = "@[$hostname]($style) -> "
+
+[directory]
+style = "blue"
+truncation_length=3
+
+[git_status]
+style = "red"
+
+[python]
+symbol = " "
+style = "yellow"
+
+[nodejs]
+symbol = " "
+style = "green"
+
+[rust]
+symbol = " "
+style = "red"
+
